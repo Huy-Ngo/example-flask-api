@@ -1,2 +1,5 @@
+from . import api
+
+
 def init_app(app): 
-    pass 
+    api.init_app(app)
