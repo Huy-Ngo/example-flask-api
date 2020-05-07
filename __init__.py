@@ -1,5 +1,8 @@
 from flask import Flask
+from flask_restful import Api
+
 import models
+from models import db
 
 
 def create_app():
@@ -10,5 +13,9 @@ def create_app():
     )
 
     models.init_app(app)
+
+    @app.before_first_request
+    def create_tables():
+        db.create_all()
 
     return app
